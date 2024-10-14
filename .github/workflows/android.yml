@@ -24,3 +24,14 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew assembleDebug
+
+
+    - uses: ncipollo/release-action@v1
+      with:
+          # 要包含到Release Assets中的文件
+        artifacts: "*.apk"
+          # 会使用一个临时的token来创建Release
+        token: ${{ github.token }}
+          # 自动生成一些变化列表之类的内容。
+        generateReleaseNotes: true
+
